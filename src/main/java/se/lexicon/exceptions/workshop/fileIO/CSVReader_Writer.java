@@ -94,35 +94,40 @@ public class CSVReader_Writer {
 }
 
 
-    public static void saveLastNames(List <String> lastNames){
-
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get("lastnames.txt"));
-        for(String toWrite : lastNames){
-            writer.append(toWrite+",");
+    public static void saveLastNames(List<String> lastNames) {
+    try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("lastnames.txt"))) {
+        for (String toWrite : lastNames) {
+            writer.append(toWrite + ",");
         }
         writer.flush();
+    } catch (IOException e) {
+        System.err.println("An error occurred: " + e.getMessage());
     }
+}
 
-    public static void saveFemaleNames(List <String> femaleNames){
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_female.txt"));
-        for(String toWrite : femaleNames){
-            writer.append(toWrite+",");
+    public static void saveFemaleNames(List<String> femaleNames) {
+    try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_female.txt"))) {
+        for (String toWrite : femaleNames) {
+            writer.append(toWrite + ",");
         }
         writer.flush();
-
+    } catch (IOException e) {
+        System.err.println("An error occurred: " + e.getMessage());
     }
+}
 
 
 
-    public static void saveMaleNames(List <String> maleNames){
-        BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_males.txt"));
-        for(String toWrite : maleNames){
-            writer.append(toWrite+",");
+    public static void saveMaleNames(List<String> maleNames) {
+    try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_males.txt"))) {
+        for (String toWrite : maleNames) {
+            writer.append(toWrite + ",");
         }
         writer.flush();
-
-
+    } catch (IOException e) {
+        System.err.println("An error occurred: " + e.getMessage());
     }
+}
 
 
 }
