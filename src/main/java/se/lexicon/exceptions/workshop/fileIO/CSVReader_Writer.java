@@ -46,17 +46,19 @@ public class CSVReader_Writer {
      * This method getFemaleFirstNames should make use of a try-catch with resources
      * @return
      */
-    public static List<String> getFemaleFirstNames(){
+    public static List<String> getFemaleFirstNames() {
+    List<String> names = null;
 
-        List<String> names=null;
-
-        BufferedReader reader = Files.newBufferedReader(Paths.get("firstname_female.txt"))
+    try (BufferedReader reader = Files.newBufferedReader(Paths.get("firstname_female.txt"))) {
         names = reader.lines()
                 .flatMap(line -> Stream.of(line.split(",")))
                 .collect(Collectors.toList());
-
-        return names;
+    } catch (IOException e) {
+        System.err.println("An error occurred: " + e.getMessage());
     }
+
+    return names;
+}
 
 
     /**
