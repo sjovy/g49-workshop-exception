@@ -8,9 +8,9 @@ import se.lexicon.exceptions.workshop.fileIO.CSVReader_Writer;
 
 public class Main {
 
-	public static void main(String[] args) {
-		
-		List <String> maleFirstNames = CSVReader_Writer.getMaleFirstNames();
+    public static void main(String[] args) {
+
+        List <String> maleFirstNames = CSVReader_Writer.getMaleFirstNames();
         List <String> femaleFirstNames = CSVReader_Writer.getFemaleFirstNames();
 
         List <String> lastNames = CSVReader_Writer.getLastNames();
@@ -22,6 +22,6 @@ public class Main {
         Person test = nameService.getNewRandomPerson();
         System.out.println(test);
 
-	}
+    }
 
 }
