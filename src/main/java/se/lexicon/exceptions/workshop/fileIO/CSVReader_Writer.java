@@ -116,8 +116,6 @@ public class CSVReader_Writer {
     }
 }
 
-
-
     public static void saveMaleNames(List<String> maleNames) {
     try (BufferedWriter writer = Files.newBufferedWriter(Paths.get("firstname_males.txt"))) {
         for (String toWrite : maleNames) {
