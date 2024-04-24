@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import se.lexicon.exceptions.workshop.data_access.NameService;
-import se.lexicon.exceptions.workshop.domain.Person;
+import se.lexicon.exceptions.workshop.domain.*;
 import se.lexicon.exceptions.workshop.fileIO.CSVReader_Writer;
 
 public class Main {
@@ -27,5 +27,18 @@ public class Main {
 
         Person test = nameService.getNewRandomPerson();
         System.out.println(test);
+
+        try {
+            nameService.addLastName("Karlsson");
+        } catch (NameService.DuplicateNameException e) {
+            System.err.println("An error occurred: " + e.getMessage());
+        }
+
+        try {
+            nameService.addLastName("Sjövy");
+        } catch (NameService.DuplicateNameException e) {
+            System.err.println("An error occurred: " + e.getMessage());
+        }
+
     }
 }
