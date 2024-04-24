@@ -68,25 +68,30 @@ public class CSVReader_Writer {
      * @return List <String> of last names
      * @throws IOException
      */
-    public static List<String> getLastNames() throws IOException{
+    public static List<String> getLastNames() {
+    List<String> names = null;
+    BufferedReader reader = null;
 
-        List<String> names = null;
-        BufferedReader reader = null;
-
-        try{
-            reader = Files.newBufferedReader(Paths.get("lastnames.txt"));
-            names = reader.lines()
-                    .flatMap(line -> Stream.of(line.split(",")))
-                    .collect(Collectors.toList());
-
-
-        }finally{
-            if(reader != null){
+    try {
+        reader = Files.newBufferedReader(Paths.get("lastnames.txt"));
+        names = reader.lines()
+                .flatMap(line -> Stream.of(line.split(",")))
+                .collect(Collectors.toList());
+    } catch (IOException e) {
+        // Handle the exception here
+        System.err.println("An error occurred: " + e.getMessage());
+    } finally {
+        if (reader != null) {
+            try {
                 reader.close();
+            } catch (IOException e) {
+                // Handle the exception here
+                System.err.println("An error occurred while closing the reader: " + e.getMessage());
             }
         }
-        return names;
     }
+    return names;
+}
 
 
     public static void saveLastNames(List <String> lastNames){
